@@ -1,5 +1,7 @@
 
+
 class SSProblem:
+	
 	def __init__(self):
 
 	# adds a constraint to a given var object 

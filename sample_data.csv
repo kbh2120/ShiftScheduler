@@ -1,5 +1,7 @@
-Name, Shift 1, Shift 2, Shift 3, Shift 4
+[Timestamp], Name, Shift 1, Shift 2, Shift 3, Shift 4
 Kristie, Yes, No, Yes, Yes
 Sandya, Yes, No, No, No
 Ami, No, No, No, No
 
+
+SHIFTS= [Shift 1, Shift 2, 3, 4]
