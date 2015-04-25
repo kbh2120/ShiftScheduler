@@ -1,7 +1,4 @@
-[Timestamp], Name, Shift 1, Shift 2, Shift 3, Shift 4
-Kristie, Yes, No, Yes, Yes
-Sandya, Yes, No, No, No
-Ami, No, No, No, No
-
-
-SHIFTS= [Shift 1, Shift 2, 3, 4]
+Timestamp, Name, email, [12pm-1pm], [1pm-2pm], [4pm-5pm], [6pm-7pm]
+123, Kristie, kk, Yes, No, Yes, Yes
+123, Sandya, BLAH, Yes, No, No, No
+3432, Ami, myEMail, No, No, No, No

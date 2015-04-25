@@ -2,8 +2,7 @@
 # person has constraints and information
 
 class Person:
-	def __init__(self, name): 
-		self.name = name
+	def __init__(self): 
 
 		# any other information about the person you want to add
 		self.attributes = {} 

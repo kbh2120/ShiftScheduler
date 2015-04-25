@@ -1,42 +1,59 @@
-import Person
-import Shift
-import pandas
+from Person import *
+from Shift import *
+from pandas import *
 
 class FileParser:
 
 	def __init__(self, in_file, shifts):
 		self.in_file = in_file
-		self.prob = SSProblem()
+		# url = './sample_data.csv'
 		self.shifts = shifts
+		self.all_people = []
 
-	def read_file():
-		# ignore timestamp
-	
-	# create Person 
-	def create_person(name):
-		p = Person(name)
+	def read_file(self):
+		df = read_csv(self.in_file, skipinitialspace=True, true_values=[' Yes', 'Yes', 'Free', ' Free'], false_values=['No', ' No', 'Busy', ])
 
-		for const in constraints:
-			# if the answer is a NO, add to person's constraints
-			
+		print df
 
-		# add attribute method
-		# p.add_attribute()
-		constraints 
+		all_people = []
+		rows = map(list, df.values)
+		num_ppl = len(rows)
+		# del df['Timestamp']
+		col_names = []
+		shift_counter = 0
+		first_shift_idx = len(rows)
+		for i in range(len(df.columns)):
+		    col_names.append(df.columns[i])
+		    if df.columns[i].startswith('['):
+		        if i < first_shift_idx:
+		            first_shift_idx = i
+		        # create shift constraint
+		        self.shifts.append(Shift(shift_counter))
+		        shift_counter = shift_counter + 1
+		        
+		for row in rows:
+		    p = Person()
+		    # add all attributes to Person object    
+		    for j in range(1, first_shift_idx):
+		        p.add_attribute(col_names[j], row[j])
+		        print '********'
+		        print col_names[j]
+		        print row[j]
 
-		# list of the shifts you can't do
+		    # list of available times
+		    availability = row[first_shift_idx:]
+		    for k in range(len(availability)):
+		        if availability[k] == False:
+		            p.add_constraint(self.shifts[k])
+		    all_people.append(p)
 
 
+		print all_people[0].attributes
+		print all_people[0].constraints[0].id
 
-	# create Shifts and add to global shifts
-	def create_constraint(constraint):
-		# shift id will be the index
-
-
-
-	def create_SSProblem():
+	def create_SSProblem(self):
 		self.read_file()
-
-
-		return self.prob
+		self.prob = SSProblem(self.shifts, self.all_people)
+		#outputs txt file with solutions
+		self.prob.solve()
 
