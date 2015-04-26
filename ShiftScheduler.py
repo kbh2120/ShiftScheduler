@@ -1,8 +1,20 @@
-# global shift array, must be passed into fileparser
-
-SHIFTS = []
+###############################################################################
+# ShiftScheduler.py
+# Main file 
+###############################################################################
 
 from FileParser import *
 
-fp = FileParser('./sample_data.csv', SHIFTS)
-fp.read_file()
+
+class ShiftScheduler: 
+	def __init__(self):
+		#global shift array, must be passed into fileparser
+		self.SHIFTS = []
+		fp = FileParser('./sample_data.csv', self.SHIFTS)
+		fp.read_file()
+
+def main():
+	ss = ShiftScheduler()
+
+
+main()
