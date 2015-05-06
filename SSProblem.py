@@ -17,18 +17,26 @@ class SSProblem:
 			domains[p.attributes['Name']]=fd.FiniteDomain(shift_ids)
 			names.append(p.attributes['Name'])
 
+		names = tuple(names)
+
 		constraints = []
 		for p in self.people:
 			for c in p.constraints:
 				    constraints.append(fd.make_expression((p.attributes['Name'],),
                                           "%s[0] != '%s'"%(p.attributes['Name'],c.id)))
 
+		print names
+		print domains
 		print constraints
 
 		r = Repository(names,domains,constraints)
 		solutions = Solver().solve(r)
 
 		print solutions
+
+		if not solutions:
+			print 'No solutions found'
+			return
 
 		#Printing solutions-- need to add to print to file instead of command line
 		for s in solutions:
