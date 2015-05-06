@@ -30,7 +30,7 @@ class FileParser:
 		        shift = Shift(shift_counter)
 		        # parse and add details
 		        title = df.columns[i]
-		        shift.set_str(title)
+		        shift.set_str(title.strip('[]'))
 		        a = title.strip('[]').split('(')
 		       	if len(a) > 1:
 			        shift_name = a[0][:-1]
