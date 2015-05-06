@@ -17,3 +17,6 @@ class Person:
 	def add_constraint(self, shift):
 		self.constraints.append(shift)
 
+	def add_name(self):
+		if 'First Name' in self.attributes and 'Last Name' in self.attributes:
+			self.attributes['Name'] = self.attributes['First Name'] + self.attributes['Last Name']

@@ -38,6 +38,8 @@ class FileParser:
 		        print '********'
 		        print col_names[j]
 		        print row[j]
+		    # add name attribute
+		    p.add_name()
 
 		    # list of available times
 		    availability = row[first_shift_idx:]
@@ -45,8 +47,6 @@ class FileParser:
 		        if availability[k] == False:
 		            p.add_constraint(self.shifts[k])
 		    self.all_people.append(p)
-		    print '***ALL PEOPLE***'
-		    print self.all_people
 
 
 		print self.all_people[0].attributes
