@@ -7,20 +7,25 @@ class SSProblem:
 		self.people = people
 	def solve(self):
 		domains = {}
-
-		print self.people
+		names = []
+		
+		shift_ids = []
+		for s in self.shifts:
+			shift_ids.append(str(s.id))
 
 		for p in self.people:
-			domains[p.attributes['Name']]=fd.FiniteDomain(self.shifts)
+			domains[p.attributes['Name']]=fd.FiniteDomain(shift_ids)
+			names.append(p.attributes['Name'])
+
 		constraints = []
 		for p in self.people:
-			for c in self.constraints:
+			for c in p.constraints:
 				    constraints.append(fd.make_expression((p.attributes['Name'],),
-                                          "%s[0] != '%s'"%(p.attributes['Name'],c.shift.start)))
+                                          "%s[0] != '%s'"%(p.attributes['Name'],c.id)))
 
 		print constraints
 
-		r = Repository(self.people,domains,constraints)
+		r = Repository(names,domains,constraints)
 		solutions = Solver().solve(r)
 
 		print solutions
