@@ -27,7 +27,22 @@ class FileParser:
 		        if i < first_shift_idx:
 		            first_shift_idx = i
 		        # create shift constraint
-		        self.shifts.append(Shift(shift_counter))
+		        shift = Shift(shift_counter)
+		        # parse and add details
+		        title = df.columns[i]
+		        shift.set_str(title)
+		        a = title.strip('[]').split('(')
+		       	if len(a) > 1:
+			        shift_name = a[0][:-1]
+			        shift_time = a[1].strip(')')
+			        shift_start = shift_time.split(' - ')[0]
+			        shift_end = shift_time.split(' - ')[1]
+			        # set details
+			        shift.set_name(shift_name)
+			        shift.set_start(shift_start)
+			        shift.set_end(shift_end)
+		        self.shifts.append(shift)
+		        print shift
 		        shift_counter = shift_counter + 1
 		        
 		for row in rows:
