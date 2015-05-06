@@ -17,6 +17,9 @@ class ShiftScheduler:
 
 def callback(csv_path, out_path):
 	ss = ShiftScheduler(csv_path.get(), out_path.get())
+	fp = FileParser('./sample_data.csv', self.SHIFTS)
+	# fp = FileParser('/Users/kristiehoward/Desktop/my_form_responses.csv', self.SHIFTS)
+	fp.create_SSProblem()
 
 def main():
 	master = Tk()
@@ -39,11 +42,3 @@ def main():
 	mainloop()
 
 main()
-
-
-
-
-
-
-
-
