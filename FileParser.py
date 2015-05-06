@@ -1,6 +1,7 @@
 from Person import *
 from Shift import *
 from pandas import *
+from SSProblem import *
 
 class FileParser:
 
