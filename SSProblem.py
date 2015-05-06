@@ -5,9 +5,11 @@ class SSProblem:
 	def __init__(self, shifts, people):
 		self.shifts = shifts
 		self.people = people
-	def solve():
-		print 'hi'
+	def solve(self):
 		domains = {}
+
+		print self.people
+
 		for p in self.people:
 			domains[p.attributes['Name']]=fd.FiniteDomain(self.shifts)
 		constraints = []
