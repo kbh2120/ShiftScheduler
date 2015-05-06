@@ -20,7 +20,7 @@ class SSProblem:
 
 		print constraints
 
-		r = Repository(variables,domains,constraints)
+		r = Repository(self.people,domains,constraints)
 		solutions = Solver().solve(r)
 
 		print solutions
