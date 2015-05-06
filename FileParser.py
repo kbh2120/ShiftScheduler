@@ -14,7 +14,7 @@ class FileParser:
 	def read_file(self):
 		df = read_csv(self.in_file, skipinitialspace=True, true_values=[' Yes', 'Yes', 'Free', ' Free'], false_values=['No', ' No', 'Busy', ' Busy', ''])
 
-		print df
+		# print df
 		rows = map(list, df.values)
 		num_ppl = len(rows)
 		# del df['Timestamp']
@@ -42,7 +42,7 @@ class FileParser:
 			        shift.set_start(shift_start)
 			        shift.set_end(shift_end)
 		        self.shifts.append(shift)
-		        print shift
+		        # print shift
 		        shift_counter = shift_counter + 1
 		        
 		for row in rows:
@@ -50,9 +50,9 @@ class FileParser:
 		    # add all attributes to Person object    
 		    for j in range(1, first_shift_idx):
 		        p.add_attribute(col_names[j], row[j])
-		        print '********'
-		        print col_names[j]
-		        print row[j]
+		        # print '********'
+		        # print col_names[j]
+		        # print row[j]
 		    # add name attribute
 		    p.add_name()
 
@@ -64,8 +64,8 @@ class FileParser:
 		    self.all_people.append(p)
 
 
-		print self.all_people[0].attributes
-		print self.all_people[0].constraints[0].id
+		# print self.all_people[0].attributes
+		# print self.all_people[0].constraints[0].id
 
 	def create_SSProblem(self):
 		self.read_file()
