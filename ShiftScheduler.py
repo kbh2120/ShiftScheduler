@@ -11,7 +11,7 @@ class ShiftScheduler:
 		#global shift array, must be passed into fileparser
 		self.SHIFTS = []
 		fp = FileParser('./sample_data.csv', self.SHIFTS)
-		fp.read_file()
+		fp.create_SSProblem()
 
 def main():
 	ss = ShiftScheduler()
