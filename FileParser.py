@@ -12,11 +12,9 @@ class FileParser:
 		self.all_people = []
 
 	def read_file(self):
-		df = read_csv(self.in_file, skipinitialspace=True, true_values=[' Yes', 'Yes', 'Free', ' Free'], false_values=['No', ' No', 'Busy', ])
+		df = read_csv(self.in_file, skipinitialspace=True, true_values=[' Yes', 'Yes', 'Free', ' Free'], false_values=['No', ' No', 'Busy', ' Busy', ''])
 
 		print df
-
-		all_people = []
 		rows = map(list, df.values)
 		num_ppl = len(rows)
 		# del df['Timestamp']
@@ -46,14 +44,17 @@ class FileParser:
 		    for k in range(len(availability)):
 		        if availability[k] == False:
 		            p.add_constraint(self.shifts[k])
-		    all_people.append(p)
+		    self.all_people.append(p)
+		    print '***ALL PEOPLE***'
+		    print self.all_people
 
 
-		print all_people[0].attributes
-		print all_people[0].constraints[0].id
+		print self.all_people[0].attributes
+		print self.all_people[0].constraints[0].id
 
 	def create_SSProblem(self):
 		self.read_file()
+
 		self.prob = SSProblem(self.shifts, self.all_people)
 		#outputs txt file with solutions
 		self.prob.solve()
