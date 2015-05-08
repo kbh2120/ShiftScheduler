@@ -15,8 +15,13 @@ class ShiftScheduler:
 		fp.read_file()
 		fp.create_SSProblem()
 
-def callback(csv_path, out_path):
-	ss = ShiftScheduler(csv_path, out_path)
+
+def callback(csv_path, out_path, root):
+	ss = ShiftScheduler(csv_path.get(), out_path.get())
+	csv_path.delete(0, 'end')
+	out_path.delete(0, 'end')
+	root.destroy()
+
 	##fp = FileParser(csv_path, out_path, [])
 	#fp.create_SSProblem()
 
@@ -36,7 +41,7 @@ def main():
 	out_path = Entry(master)
 	out_path.pack()
 	out_path.focus_set()
-	b = Button(master, text="Schedule Us!", width=30, height=20, command=lambda: callback(csv_path.get(), out_path.get()))
+	b = Button(master, text="Schedule Us!", width=30, height=20, command=lambda: callback(csv_path, out_path, master))
 	b.pack()
 	mainloop()
 
