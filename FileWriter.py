@@ -1,8 +1,10 @@
+# Prints output file with all possible schedules in two formats-- by name and by shift
 class FileWriter:
 	def __init__(self, soln, shifts):
 		self.solutions = soln
 		self.shifts = shifts
 	def writeFile(self, out_path):
+		# Print all possible schedules-- put shift for each name
 		f = open(out_path,'w')
 		f.write('Schedule by Name\n')
 		f.write('----------------\n\n')
@@ -14,6 +16,7 @@ class FileWriter:
 				f.write('\n')
 			f.write('\n')
 
+		# Add solutions to dictionary in order to print by shift instead
 		list = []
 		for s in self.solutions:
 			dict = {}
@@ -25,6 +28,8 @@ class FileWriter:
 					dict[tmp] = [curr]
 			list.append(dict)
 
+
+		# Print all possible schedules-- put names that correspond to each shift
 		f.write('Schedule by Shift\n')
 		f.write('----------------\n\n')
 

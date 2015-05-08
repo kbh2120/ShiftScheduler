@@ -1,16 +1,14 @@
-
-# person has constraints and information
-
+# Person has constraints and information
 class Person:
 	def __init__(self): 
 
-		# any other information about the person you want to add
+		# Any other information about the person you want to add
 		self.attributes = {} 
 		
-		# list of shifts the person cannot make
+		# List of shifts the person cannot attend
 		self.constraints = [] 
 
-	# add attribute method, contains a dictionary of any person attribute you want to add
+	# Add attribute method, contains a dictionary of any person attribute you want to add
 	def add_attribute(self, attribute_name, attribute_value):
 		self.attributes[attribute_name] = attribute_value
 

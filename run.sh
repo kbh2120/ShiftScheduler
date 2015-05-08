@@ -1,15 +1,15 @@
 echo "*******************************************"
 echo "Now installing necessary packages"
 echo "*******************************************"
-# need password to install logilab
+# Need password to install logilab
 sudo chown -R $USER /Library/Python/2.7
 cd logilab-constraint-0.5.0
-# install logilab
+# Install logilab
 python setup.py install
 cd ..
-# install pandas
+# Install pandas
 pip install pandas
-# run program
+# Run program
 echo "*******************************************"
 echo "Please look for a tkinter application (the icon is a feather)"
 echo "*******************************************"

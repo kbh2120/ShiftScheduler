@@ -1,6 +1,4 @@
-
-# should have id, start, end time
-
+# Represents a shift: includes start time, end time, name of shift, and a shift ID
 class Shift:
 	def __init__(self, id):
 		self.id = id

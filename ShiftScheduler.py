@@ -9,7 +9,7 @@ from Tkinter import *
 
 class ShiftScheduler: 
 	def __init__(self, csv_path, out_path):
-		#global shift array, must be passed into fileparser
+		# Global shift array, must be passed into FileParser
 		self.SHIFTS = []
 		fp = FileParser(csv_path, out_path, [])
 		fp.read_file()
@@ -24,6 +24,7 @@ def callback(csv_path, out_path, root):
 
 
 def main():
+	# Create GUI to provide information about input and output files
 	master = Tk()
 	master.minsize(300,200)
 	master.geometry("600x300")
