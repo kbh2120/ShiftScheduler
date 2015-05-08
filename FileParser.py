@@ -5,11 +5,12 @@ from SSProblem import *
 
 class FileParser:
 
-	def __init__(self, in_file, shifts):
+	def __init__(self, in_file, out_path, shifts):
 		self.in_file = in_file
 		# url = './sample_data.csv'
 		self.shifts = shifts
 		self.all_people = []
+		self.out_path = out_path
 
 	def read_file(self):
 		df = read_csv(self.in_file, skipinitialspace=True, true_values=[' Yes', 'Yes', 'Free', ' Free'], false_values=['No', ' No', 'Busy', ' Busy', ''])
@@ -72,5 +73,5 @@ class FileParser:
 
 		self.prob = SSProblem(self.shifts, self.all_people)
 		#outputs txt file with solutions
-		self.prob.solve()
+		self.prob.solve(self.out_path)
 

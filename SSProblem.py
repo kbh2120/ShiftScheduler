@@ -6,7 +6,7 @@ class SSProblem:
 	def __init__(self, shifts, people):
 		self.shifts = shifts
 		self.people = people
-	def solve(self):
+	def solve(self, out_path):
 		domains = {}
 		names = []
 		
@@ -35,4 +35,4 @@ class SSProblem:
 
 
 		f = FileWriter(solutions, self.shifts)
-		f.writeFile()
+		f.writeFile(out_path)
