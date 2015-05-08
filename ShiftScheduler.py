@@ -22,25 +22,36 @@ def callback(csv_path, out_path, root):
 	out_path.delete(0, 'end')
 	root.destroy()
 
-	##fp = FileParser(csv_path, out_path, [])
-	#fp.create_SSProblem()
 
 def main():
 	master = Tk()
-	master.minsize(300,300)
-	master.geometry("500x500")
-	fp = Label(master, text="Welcome to ShiftScheduler! Please enter a csv file and an output file. ")
-	fp = Label(master, text="Enter full csv path: ")
+	master.minsize(300,200)
+	master.geometry("600x300")
+	master.title("ShiftScheduler - COMS3101 Python")
+	title = Label(master, text="Welcome to ShiftScheduler! \n", font=("Helvetica", 22))
+	title.pack()
+
+
+	fp = Label(master, text="Please enter the file path where you saved the results from your Google form. ", font=("Helvetica", 14))
 	fp.pack()
-	csv_path = Entry(master)
+
+	instructions = Label(master, text="For example, if your Google doc csv file is called sample_data.csv and is saved in \n this directory, you should input ./sample_data.csv. ", font=("Helvetica", 12))
+	instructions.pack()	
+	csv = StringVar()
+	csv_path = Entry(master, textvariable=csv)
+	csv.set("./sample_data.csv")
 	csv_path.pack()
 	csv_path.focus_set()
 
-	op = Label(master, text="Enter full outfile path: ")
+	op = Label(master, text="\n\nPlease enter the file path where you would like to save your results. ", font=("Helvetica", 14))
 	op.pack()
-	out_path = Entry(master)
+
+	out = StringVar()
+	out_path = Entry(master, textvariable=out)
+	out.set("out.txt")
 	out_path.pack()
 	out_path.focus_set()
+
 	b = Button(master, text="Schedule Us!", width=30, height=20, command=lambda: callback(csv_path, out_path, master))
 	b.pack()
 	mainloop()

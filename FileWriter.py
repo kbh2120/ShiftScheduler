@@ -4,6 +4,8 @@ class FileWriter:
 		self.shifts = shifts
 	def writeFile(self, out_path):
 		f = open(out_path,'w')
+		f.write('Schedule by Name\n')
+		f.write('----------------\n\n')
 		for s in self.solutions:
 			f.write('Solution ' + str(self.solutions.index(s)) + ':\n')
 			for curr in s:
@@ -11,4 +13,28 @@ class FileWriter:
 				f.write(str(self.shifts[int(s[curr])]))
 				f.write('\n')
 			f.write('\n')
+
+		list = []
+		for s in self.solutions:
+			dict = {}
+			for curr in s:
+				tmp = str(self.shifts[int(s[curr])])
+				if tmp in dict:
+					dict[tmp].append(curr)
+				else:
+					dict[tmp] = [curr]
+			list.append(dict)
+
+		f.write('Schedule by Shift\n')
+		f.write('----------------\n\n')
+
+		for l in list:
+			f.write('Solution: '+str(list.index(l))+'\n')
+			for curr in l:
+				s = ''
+				for a in l[curr]:
+					s = s + a + ', '
+				f.write(curr + ': ' + s[:-2]+'\n')
+			f.write('\n')
+
 		f.close()
